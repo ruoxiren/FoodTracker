@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodTracker.Host.WebApi", "FoodTracker.Host.WebApi.csproj", "{796A0A98-2C0B-498C-B32A-3082281642F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodTracker.Test.DebugConsole", "..\FoodTracker.Test.DebugConsole\FoodTracker.Test.DebugConsole.csproj", "{DF4EE9F1-9F6E-4F1B-BC37-B101104B750C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodTracker.Services", "..\FoodTracker.Services\FoodTracker.Services.csproj", "{205DFE10-AD33-4A5B-9316-71F66B49327D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodTracker.Data", "..\FoodTracker.Data\FoodTracker.Data.csproj", "{585ED7A1-0D7F-429C-8243-0F933E5D2F64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodTracker.Data.Repository", "..\FoodTracker.Data.Repository\FoodTracker.Data.Repository.csproj", "{F8D0DD4F-6A5D-460B-9420-BB989F969758}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{796A0A98-2C0B-498C-B32A-3082281642F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{796A0A98-2C0B-498C-B32A-3082281642F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{796A0A98-2C0B-498C-B32A-3082281642F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{796A0A98-2C0B-498C-B32A-3082281642F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF4EE9F1-9F6E-4F1B-BC37-B101104B750C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF4EE9F1-9F6E-4F1B-BC37-B101104B750C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF4EE9F1-9F6E-4F1B-BC37-B101104B750C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF4EE9F1-9F6E-4F1B-BC37-B101104B750C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{205DFE10-AD33-4A5B-9316-71F66B49327D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{205DFE10-AD33-4A5B-9316-71F66B49327D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{205DFE10-AD33-4A5B-9316-71F66B49327D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{205DFE10-AD33-4A5B-9316-71F66B49327D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{585ED7A1-0D7F-429C-8243-0F933E5D2F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{585ED7A1-0D7F-429C-8243-0F933E5D2F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{585ED7A1-0D7F-429C-8243-0F933E5D2F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{585ED7A1-0D7F-429C-8243-0F933E5D2F64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8D0DD4F-6A5D-460B-9420-BB989F969758}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8D0DD4F-6A5D-460B-9420-BB989F969758}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8D0DD4F-6A5D-460B-9420-BB989F969758}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8D0DD4F-6A5D-460B-9420-BB989F969758}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B9D6D2A-431A-463C-A8B0-6D4533746573}
+	EndGlobalSection
+EndGlobal
