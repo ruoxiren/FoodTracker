@@ -2,6 +2,8 @@
 {
     public class MealDto
     {
+        public Guid Id { get; set; }
+
         public string MealName { get; set; }
 
         public DateTimeOffset ConsumedAt { get; set; }
@@ -17,12 +19,13 @@
             TotalCalories = totalCalories;
         }
 
-        public MealDto(string mealName, DateTimeOffset consumedAt, List<MealItem> recipesAndServings)
+        public MealDto(Guid id, string mealName, DateTimeOffset consumedAt, List<MealItem> recipesAndServings)
         {
             if (recipesAndServings == null)
             {
                 throw new ArgumentNullException(nameof(recipesAndServings));
             }
+            Id = id;
             MealName = mealName;
             ConsumedAt = consumedAt;
             RecipesAndServings = recipesAndServings;
@@ -32,7 +35,7 @@
         public override string ToString()
         {
             return
-                $"Meal Name: {MealName}, Time: {ConsumedAt}, Total Calories: {TotalCalories}, RecipesAndServings: {(RecipesAndServings != null ? string.Join(", ", RecipesAndServings.Select(o => o.ToString())) : "null")}";
+                $"Meal Id: {Id}, Meal Name: {MealName}, Time: {ConsumedAt}, Total Calories: {TotalCalories}, RecipesAndServings: {(RecipesAndServings != null ? string.Join(", ", RecipesAndServings.Select(o => o.ToString())) : "null")}";
         }
     }
 }

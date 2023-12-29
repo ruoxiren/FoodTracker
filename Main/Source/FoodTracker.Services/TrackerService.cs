@@ -40,7 +40,7 @@ namespace FoodTracker.Services
                     RecipeModel? recipeModel = _recipeRepository.GetRecipeById(recipeId);
                     if (recipeModel != null)
                     {
-                        recipesAndServings.Add(new MealItem(new RecipeDto(recipeModel.Name, recipeModel.ServingSize, recipeModel.Calories, recipeModel.Description), servingSize));
+                        recipesAndServings.Add(new MealItem(new RecipeDto(recipeModel.Id, recipeModel.Name, recipeModel.ServingSize, recipeModel.Calories, recipeModel.Description), servingSize));
                     }
                     else
                     {
@@ -48,7 +48,7 @@ namespace FoodTracker.Services
                     }
                 }
 
-                var mealDto = new MealDto(mealModel.Name, mealModel.ConsumedAt, recipesAndServings);
+                var mealDto = new MealDto(mealModel.Id, mealModel.Name, mealModel.ConsumedAt, recipesAndServings);
                 return mealDto;
             }
             else if (mealModel.Calories != null)
