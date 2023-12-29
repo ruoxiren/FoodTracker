@@ -4,9 +4,9 @@ namespace FoodTracker.Data
 {
     public class MealItem
     {
-        public required RecipeDto Recipe { get; set; }
+        public RecipeDto Recipe { get; set; }
 
-        public required decimal ServingSize { get; set; }
+        public decimal ServingSize { get; set; }
 
         public decimal Calories { get { return Recipe.Calories * ServingSize; } }
 

@@ -27,7 +27,7 @@ namespace FoodTracker.Data.Repository.InMemory
 
         public MealModel? GetMealById(Guid id)
         {
-            var result = meals.FirstOrDefault(m =>m.Id == id);
+            var result = meals.FirstOrDefault(m => m.Id == id);
             return result;
         }
 
