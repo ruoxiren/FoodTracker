@@ -1,6 +1,6 @@
 ﻿namespace FoodTracker.Data.DTO
 {
-    public class MealDTO
+    public class MealDto
     {
         public required string MealName { get; set; }
 

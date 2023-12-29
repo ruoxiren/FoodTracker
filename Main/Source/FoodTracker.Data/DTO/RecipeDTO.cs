@@ -2,7 +2,7 @@
 
 namespace FoodTracker.Data.DTO
 {
-    public class RecipeDTO
+    public class RecipeDto
     {
         public required string Name { get; set; }
 
