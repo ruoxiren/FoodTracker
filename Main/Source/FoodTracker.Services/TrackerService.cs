@@ -53,7 +53,7 @@ namespace FoodTracker.Services
             }
             else if (mealModel.Calories != null)
             {
-                var mealDto = new MealDto(mealModel.Name, mealModel.ConsumedAt, mealModel.Calories.Value);
+                var mealDto = new MealDto(mealModel.Id, mealModel.Name, mealModel.ConsumedAt, mealModel.Calories.Value);
                 return mealDto;
             }
             else

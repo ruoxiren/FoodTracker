@@ -12,8 +12,9 @@
 
         public decimal TotalCalories { get; set; }
 
-        public MealDto(string mealName, DateTimeOffset consumedAt, decimal totalCalories)
+        public MealDto(Guid id, string mealName, DateTimeOffset consumedAt, decimal totalCalories)
         {
+            Id = id;
             MealName = mealName;
             ConsumedAt = consumedAt;
             TotalCalories = totalCalories;
