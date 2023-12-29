@@ -2,7 +2,7 @@
 {
     public enum ServingSizeOption
     {
-        PerServing = 0,
+        PerCount = 0,
 
         PerOunce = 1,
 

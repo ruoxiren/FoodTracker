@@ -12,7 +12,7 @@
 
         public List<decimal>? Servings { get; set; }
 
-        public decimal Calories { get; set; }
+        public decimal? Calories { get; set; }
 
         public MealModel(Guid id, string name, DateTimeOffset consumedAt, List<Guid> recipes, List<decimal> servings)
         {
@@ -42,6 +42,7 @@
             ConsumedAt = mealModel.ConsumedAt;
             Recipes = mealModel.Recipes;
             Servings = mealModel.Servings;
+            Calories = mealModel.Calories;
         }
     }
 }

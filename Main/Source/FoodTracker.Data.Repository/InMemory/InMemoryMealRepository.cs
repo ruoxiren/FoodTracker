@@ -1,10 +1,5 @@
 ﻿using FoodTracker.Data.Model;
 using FoodTracker.Data.Repository.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FoodTracker.Data.Repository.InMemory
 {
@@ -30,29 +25,46 @@ namespace FoodTracker.Data.Repository.InMemory
             meals.Add(meal);
         }
 
-        public void DeleteMealById(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<MealModel> GetMeal()
-        {
-            throw new NotImplementedException();
-        }
-
         public MealModel? GetMealById(Guid id)
         {
-            throw new NotImplementedException();
+            var result = meals.FirstOrDefault(m =>m.Id == id);
+            return result;
         }
 
         public MealModel? GetMealByName(string name)
         {
-            throw new NotImplementedException();
+            var result = meals.FirstOrDefault(x => x.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
+            return result;
+        }
+
+        public void DeleteMealById(Guid id)
+        {
+            meals.RemoveAll(m => m.Id == id);
+        }
+
+        public List<MealModel> GetMeal()
+        {
+            var list = new List<MealModel>();
+            meals.ForEach(m => list.Add(new(m)));
+            return list;
         }
 
         public void UpdateMeal(Guid mealId, MealModel meal)
         {
-            throw new NotImplementedException();
+            var result = meals.FirstOrDefault(x => x.Id == mealId);
+
+            if (result != null)
+            {
+                result.Name = meal.Name;
+                result.ConsumedAt = meal.ConsumedAt;
+                result.Recipes = meal.Recipes;
+                result.Servings = meal.Servings;
+                result.Calories = meal.Calories;
+            }
+            else
+            {
+                throw new ArgumentNullException(nameof(meal));
+            }
         }
     }
 }

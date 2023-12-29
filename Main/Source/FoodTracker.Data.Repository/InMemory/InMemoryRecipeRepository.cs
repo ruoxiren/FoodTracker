@@ -36,14 +36,15 @@ namespace FoodTracker.Data.Repository.InMemory
             recipes.RemoveAll(x => x.Id == id);
         }
 
-        public RecipeModel? GetRecipeByName(string name)
-        {
-            var result = recipes.FirstOrDefault(x => x.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
-            return result;
-        }
         public RecipeModel? GetRecipeById(Guid id)
         {
             var result = recipes.FirstOrDefault(x => x.Id == id);
+            return result;
+        }
+
+        public RecipeModel? GetRecipeByName(string name)
+        {
+            var result = recipes.FirstOrDefault(x => x.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
             return result;
         }
 
