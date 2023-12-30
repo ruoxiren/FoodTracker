@@ -1,0 +1,33 @@
+Meal {
+	id
+	Name
+	ConsumedAt
+	Cal
+	RecipesAndServings?: MealItem[]
+	Desc?
+}
+
+MealItem {
+	Recipe
+	ServingAmount
+	Cal
+}
+
+Recipe {
+	id
+	Name
+	ServingSize Enum
+	Cal
+	Desc?
+}
+
+1. Add recipe
+
+2. 
+
+1. get all meals
+reqeust:
+{
+}
+
+GET 

@@ -6,6 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+	</ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\FoodTracker.Data.Repository\FoodTracker.Data.Repository.csproj" />
   </ItemGroup>

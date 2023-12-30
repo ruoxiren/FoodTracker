@@ -4,39 +4,34 @@
     {
         public Guid Id { get; set; }
 
-        public string MealName { get; set; }
+        public string Name { get; set; }
 
         public DateTimeOffset ConsumedAt { get; set; }
 
-        public List<MealItem>? RecipesAndServings { get; set; }
+        public List<MealItem> MealItems { get; set; }
 
         public decimal TotalCalories { get; set; }
 
-        public MealDto(Guid id, string mealName, DateTimeOffset consumedAt, decimal totalCalories)
-        {
-            Id = id;
-            MealName = mealName;
-            ConsumedAt = consumedAt;
-            TotalCalories = totalCalories;
-        }
+        public string? Description { get; set; }
 
-        public MealDto(Guid id, string mealName, DateTimeOffset consumedAt, List<MealItem> recipesAndServings)
+        public MealDto(Guid id, string mealName, DateTimeOffset consumedAt, List<MealItem> mealItems, string? description = default)
         {
-            if (recipesAndServings == null)
+            if (mealItems == null)
             {
-                throw new ArgumentNullException(nameof(recipesAndServings));
+                throw new ArgumentNullException(nameof(mealItems));
             }
             Id = id;
-            MealName = mealName;
+            Name = mealName;
             ConsumedAt = consumedAt;
-            RecipesAndServings = recipesAndServings;
-            TotalCalories = recipesAndServings.Sum(x => x.Calories);
+            MealItems = mealItems;
+            TotalCalories = mealItems.Sum(x => x.TotalCalories);
+            Description = description;
         }
 
         public override string ToString()
         {
             return
-                $"Meal Id: {Id}, Meal Name: {MealName}, Time: {ConsumedAt}, Total Calories: {TotalCalories}, RecipesAndServings: {(RecipesAndServings != null ? string.Join(", ", RecipesAndServings.Select(o => o.ToString())) : "null")}";
+                $"Meal Id: {Id}, Meal Name: {Name}, Time: {ConsumedAt}, Total Calories: {TotalCalories}, mealItems: {(MealItems != null ? string.Join(", ", MealItems.Select(o => o.ToString())) : "null")}, Description: {Description}";
         }
     }
 }

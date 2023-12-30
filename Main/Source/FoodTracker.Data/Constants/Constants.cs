@@ -13,6 +13,8 @@
             PerPound = 3,
 
             PerCup = 4,
+
+            PerMeal = 5,
         }
     }
 }

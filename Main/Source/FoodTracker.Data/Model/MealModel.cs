@@ -8,31 +8,17 @@
 
         public DateTimeOffset ConsumedAt { get; set; }
 
-        public List<Guid>? Recipes { get; set; }
+        public List<Guid> MealItems { get; set; }
 
-        public List<decimal>? Servings { get; set; }
+        public string? Description { get; set; }
 
-        public decimal? Calories { get; set; }
-
-        public MealModel(Guid id, string name, DateTimeOffset consumedAt, List<Guid> recipes, List<decimal> servings)
-        {
-            if (recipes.Count != servings.Count)
-            {
-                throw new ArgumentException("Count of recipes and servings must match.");
-            }
-            Id = id;
-            Name = name;
-            ConsumedAt = consumedAt;
-            Recipes = recipes;
-            Servings = servings;
-        }
-
-        public MealModel(Guid id, string name, DateTimeOffset consumedAt, decimal calories)
+        public MealModel(Guid id, string name, DateTimeOffset consumedAt, List<Guid> mealItems, string? description = default)
         {
             Id = id;
             Name = name;
             ConsumedAt = consumedAt;
-            Calories = calories;
+            MealItems = mealItems;
+            Description = description;
         }
 
         public MealModel(MealModel mealModel)
@@ -40,9 +26,8 @@
             Id = mealModel.Id;
             Name = mealModel.Name;
             ConsumedAt = mealModel.ConsumedAt;
-            Recipes = mealModel.Recipes;
-            Servings = mealModel.Servings;
-            Calories = mealModel.Calories;
+            MealItems = new List<Guid>(mealModel.MealItems);
+            Description = mealModel.Description;
         }
     }
 }

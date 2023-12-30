@@ -4,7 +4,7 @@ namespace FoodTracker.Data.Repository.Interfaces
 {
     public interface IMealRepository
     {
-        List<MealModel> GetMeal();
+        List<MealModel> GetMeals();
 
         MealModel? GetMealById(Guid id);
 
@@ -12,7 +12,7 @@ namespace FoodTracker.Data.Repository.Interfaces
 
         void AddMeal(MealModel meal);
 
-        void UpdateMeal(Guid mealId, MealModel meal);
+        void UpsertMeal(Guid id, MealModel meal);
 
         void DeleteMealById(Guid id);
     }
