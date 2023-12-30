@@ -28,13 +28,13 @@ namespace FoodTracker.Services
 
         public void UpdateMeal(Guid mealId, MealDto meal)
         {
-            // Delete meal item if no longer exists
             var existingMeal = _mealRepository.GetMealById(mealId);
             if (existingMeal == null)
             {
                 throw new ArgumentNullException($"Can not find meal of id {mealId}");
             }
 
+            // Delete meal item if no longer exists
             var mealItemIds = meal.MealItems.Select(m => m.Id).ToList();
             var mealItemIdToBeDeleted = existingMeal.MealItems.Where(id => !mealItemIds.Contains(id)).ToList();
             mealItemIdToBeDeleted.ForEach(m => _mealItemRepository.DeleteMealItemById(m));
@@ -83,7 +83,7 @@ namespace FoodTracker.Services
             return meal;
         }
 
-        private MealModel MealDtoToModel(MealDto meal)
+        private static MealModel MealDtoToModel(MealDto meal)
         {
             return new MealModel(
                 meal.Id,
@@ -93,7 +93,7 @@ namespace FoodTracker.Services
                 meal.Description);
         }
 
-        private MealItemModel MealItemToModel(MealItem mealItem)
+        private static MealItemModel MealItemToModel(MealItem mealItem)
         {
             return new MealItemModel(
                 mealItem.Id,
@@ -104,7 +104,7 @@ namespace FoodTracker.Services
                 mealItem.Description);
         }
 
-        private MealItem MealItemFromModel(MealItemModel model)
+        private static MealItem MealItemFromModel(MealItemModel model)
         {
             return new MealItem(
                     model.Id,
