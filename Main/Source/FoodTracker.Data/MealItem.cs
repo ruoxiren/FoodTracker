@@ -1,5 +1,6 @@
 ﻿using FoodTracker.Data.DTO;
 using FoodTracker.Data.Constants;
+using System.Text.Json.Serialization;
 
 namespace FoodTracker.Data
 {
@@ -17,6 +18,7 @@ namespace FoodTracker.Data
 
         public string? Description { get; set; }
 
+        [JsonConstructor]
         public MealItem(Guid id, string name, ServingSizeOption servingSize, decimal servingAmount, decimal totalCalories, string? description = default)
         {
             Id = id;

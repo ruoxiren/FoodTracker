@@ -1,7 +1,10 @@
-﻿namespace FoodTracker.Data.DTO
+﻿using System.Text.Json.Serialization;
+
+namespace FoodTracker.Data.DTO
 {
     public class MealDto
     {
+        [JsonPropertyName("Id")]
         public Guid Id { get; set; }
 
         public string Name { get; set; }
@@ -14,6 +17,7 @@
 
         public string? Description { get; set; }
 
+        [JsonConstructor]
         public MealDto(Guid id, string mealName, DateTimeOffset consumedAt, List<MealItem> mealItems, string? description = default)
         {
             if (mealItems == null)
