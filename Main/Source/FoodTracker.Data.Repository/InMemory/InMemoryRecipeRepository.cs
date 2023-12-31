@@ -54,9 +54,9 @@ namespace FoodTracker.Data.Repository.InMemory
             recipes.ForEach(x => list.Add(new(x)));
             return list;
         }
-        public void UpdateRecipe(Guid recipeId, RecipeModel recipe)
+        public void UpdateRecipe(Guid id, RecipeModel recipe)
         {
-            var result = recipes.FirstOrDefault(x => x.Id == recipeId);
+            var result = recipes.FirstOrDefault(x => x.Id == id);
 
             if (result != null)
             {

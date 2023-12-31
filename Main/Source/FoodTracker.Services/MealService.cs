@@ -1,7 +1,6 @@
-﻿using FoodTracker.Data;
-using FoodTracker.Data.Constants;
-using FoodTracker.Data.DTO;
+﻿using FoodTracker.Data.DTO;
 using FoodTracker.Data.Model;
+using FoodTracker.Data.Repository.Extensions;
 using FoodTracker.Data.Repository.Interfaces;
 
 namespace FoodTracker.Services
@@ -23,7 +22,7 @@ namespace FoodTracker.Services
                 mealItem =>
                     new MealItemModel(mealItem.Id, mealItem.Name, mealItem.ServingSize.ToString(), mealItem.ServingAmount, mealItem.TotalCalories, mealItem.Description)
                 ).ToList());
-            _mealRepository.AddMeal(MealDtoToModel(meal));
+            _mealRepository.AddMeal(meal.ToModel());
         }
 
         public void UpdateMeal(Guid mealId, MealDto meal)
@@ -43,7 +42,7 @@ namespace FoodTracker.Services
             _mealRepository.UpsertMeal(mealId, new MealModel(meal.Id, meal.Name, meal.ConsumedAt, mealItemIds, meal.Description));
             
             // Update meal item
-            meal.MealItems.ForEach(m => _mealItemRepository.UpsertMealItem(m.Id, MealItemToModel(m)));
+            meal.MealItems.ForEach(m => _mealItemRepository.UpsertMealItem(m.Id, m.ToModel()));
         }
 
         public List<MealDto> GetMeals(DateTimeOffset start, DateTimeOffset end)
@@ -52,7 +51,7 @@ namespace FoodTracker.Services
             var result = _mealRepository.GetMeals().Where(x => x.ConsumedAt > start && x.ConsumedAt < end).ToList();
             foreach (var meal in result)
             {
-                meals.Add(MealModelToDto(meal));
+                meals.Add(meal.ToDto(_mealItemRepository));
             }
             return meals;
         }
@@ -71,48 +70,6 @@ namespace FoodTracker.Services
 
             // Delete meal
             _mealRepository.DeleteMealById(mealId);
-        }
-
-        private MealDto MealModelToDto(MealModel mealModel)
-        {
-            var mealItems = new List<MealItem>();
-            var mealItemModels = _mealItemRepository.GetMealItemsByIds(mealModel.MealItems);
-            mealItems.AddRange(
-                mealItemModels.Select(MealItemFromModel));
-            var meal = new MealDto(mealModel.Id, mealModel.Name, mealModel.ConsumedAt, mealItems);
-            return meal;
-        }
-
-        private static MealModel MealDtoToModel(MealDto meal)
-        {
-            return new MealModel(
-                meal.Id,
-                meal.Name,
-                meal.ConsumedAt,
-                meal.MealItems.Select(mealItem => mealItem.Id).ToList(),
-                meal.Description);
-        }
-
-        private static MealItemModel MealItemToModel(MealItem mealItem)
-        {
-            return new MealItemModel(
-                mealItem.Id,
-                mealItem.Name,
-                mealItem.ServingSize.ToString(),
-                mealItem.ServingAmount,
-                mealItem.TotalCalories,
-                mealItem.Description);
-        }
-
-        private static MealItem MealItemFromModel(MealItemModel model)
-        {
-            return new MealItem(
-                    model.Id,
-                    model.Name,
-                    (Constants.ServingSizeOption)Enum.Parse(typeof(Constants.ServingSizeOption), model.ServingSize),
-                    model.ServingAmount,
-                    model.TotalCalories,
-                    model.Description);
         }
     }
 }

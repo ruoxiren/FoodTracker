@@ -1,44 +1,51 @@
 ﻿using FoodTracker.Data.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FoodTracker.Data.Repository.Extensions;
+using FoodTracker.Data.Repository.Interfaces;
 
 namespace FoodTracker.Services
 {
     public class RecipeService
     {
-        private readonly RecipeService _recipeService;
+        private readonly IRecipeRepository _recipeRepository;
 
-        public RecipeService(RecipeService recipeService)
+        public RecipeService(IRecipeRepository recipeService)
         {
-            _recipeService = recipeService;
+            _recipeRepository = recipeService;
         }
 
-        public bool AddRecipe(RecipeDto recipe)
+        public void AddRecipe(RecipeDto recipe)
         {
-            throw new NotImplementedException();
+            _recipeRepository.AddRecipe(recipe.ToModel());
         }
 
-        public RecipeDto GetRecipe(int id)
+        public RecipeDto GetRecipe(Guid id)
         {
-            throw new NotImplementedException();
+            var recipe = _recipeRepository.GetRecipeById(id);
+            if (recipe == null)
+            {
+                throw new ArgumentNullException(nameof(recipe));
+            }
+            return recipe.ToDto();
         }
 
-        public RecipeDto GetAllRecipes()
+        public List<RecipeDto> GetAllRecipes()
         {
-            throw new NotImplementedException();
+            var recipe = _recipeRepository.GetRecipe();
+            if (recipe == null)
+            {
+                throw new ArgumentNullException(nameof(recipe));
+            }
+            return recipe.Select(x => x.ToDto()).ToList();
         }
 
-        public bool UpdateRecipe(Guid recipeId, RecipeDto recipe)
+        public void UpdateRecipe(Guid recipeId, RecipeDto recipe)
         {
-            throw new NotImplementedException();
+            _recipeRepository.UpdateRecipe(recipeId, recipe.ToModel());
         }
 
-        public bool RemoveRecipe(Guid recipeId)
+        public void RemoveRecipe(Guid recipeId)
         {
-            throw new NotImplementedException();
+            _recipeRepository.DeleteRecipeById(recipeId);
         }
     }
 }

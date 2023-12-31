@@ -12,7 +12,7 @@ namespace FoodTracker.Data.Repository.Interfaces
 
         void AddRecipe(RecipeModel recipe);
 
-        void UpdateRecipe(Guid recipeId, RecipeModel recipe);
+        void UpdateRecipe(Guid id, RecipeModel recipe);
 
         void DeleteRecipeById(Guid id);
     }

@@ -1,5 +1,5 @@
 ﻿using FoodTracker.Data.DTO;
-using static FoodTracker.Data.Constants.Constants;
+using FoodTracker.Data.Constants;
 
 namespace FoodTracker.Data
 {

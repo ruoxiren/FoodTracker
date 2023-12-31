@@ -5,17 +5,10 @@ namespace FoodTracker.Data.Repository.InMemory
 {
     public class InMemoryMealRepository : IMealRepository
     {
-        private static readonly List<MealItemModel> mealItems = new List<MealItemModel>()
-        {
-            new MealItemModel(Guid.NewGuid(), "Fish", "PerMeal", 1, 200),
-            new MealItemModel(Guid.NewGuid(), "Egg", "PerCount", 2, 150),
-            new MealItemModel(Guid.NewGuid(), "White Rice", "Per100G", (decimal)0.5, 200),
-            new MealItemModel(Guid.NewGuid(), "Dim Sum", "PerMeal", 1, 1000),
-        };
         private static readonly List<MealModel> meals = new List<MealModel>()
         {
-            new MealModel(Guid.NewGuid(), "Weekend Meal", DateTimeOffset.Parse("2023-12-30T00:00:00Z"), new List<Guid>(){ mealItems[3].Id }),
-            new MealModel(Guid.NewGuid(), "Weekday Meal", DateTimeOffset.Parse("2023-12-29T00:00:00Z"), new List<Guid>(){ mealItems[0].Id, mealItems[1].Id, mealItems[2].Id }),
+            new MealModel(Guid.NewGuid(), "Weekend Meal", DateTimeOffset.Parse("2023-12-30T00:00:00Z"), new List<Guid>(){ InMemoryMealItemRepository.InMemoryMealItems[3].Id }),
+            new MealModel(Guid.NewGuid(), "Weekday Meal", DateTimeOffset.Parse("2023-12-29T00:00:00Z"), new List<Guid>(){ InMemoryMealItemRepository.InMemoryMealItems[0].Id, InMemoryMealItemRepository.InMemoryMealItems[1].Id, InMemoryMealItemRepository.InMemoryMealItems[2].Id }),
         };
 
         public void AddMeal(MealModel meal)

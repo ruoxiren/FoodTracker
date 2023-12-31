@@ -1,6 +1,6 @@
 ﻿using FoodTracker.Data.Constants;
 using System;
-using static FoodTracker.Data.Constants.Constants;
+using static FoodTracker.Data.Constants.ServingSizeOption;
 
 namespace FoodTracker.Data.DTO
 {

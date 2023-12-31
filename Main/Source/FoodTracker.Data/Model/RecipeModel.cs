@@ -21,7 +21,7 @@
             Description = recipeModel.Description;
         }
 
-        public RecipeModel(Guid recipeId, string name, string servingSize, decimal calories, string description = "")
+        public RecipeModel(Guid recipeId, string name, string servingSize, decimal calories, string? description = default)
         {
             Id = recipeId;
             Name = name;

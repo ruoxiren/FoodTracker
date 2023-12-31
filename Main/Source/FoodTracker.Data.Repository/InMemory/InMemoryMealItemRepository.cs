@@ -5,7 +5,7 @@ namespace FoodTracker.Data.Repository.InMemory
 {
     public class InMemoryMealItemRepository : IMealItemRepository
     {
-        private static readonly List<MealItemModel> mealItems = new List<MealItemModel>()
+        public static readonly List<MealItemModel> InMemoryMealItems = new List<MealItemModel>()
         {
             new MealItemModel(Guid.NewGuid(), "Fish", "PerMeal", 1, 200),
             new MealItemModel(Guid.NewGuid(), "Egg", "PerCount", 2, 150),
@@ -25,7 +25,7 @@ namespace FoodTracker.Data.Repository.InMemory
                 mealItem.Id = Guid.NewGuid();
             }
 
-            mealItems.Add(mealItem);
+            InMemoryMealItems.Add(mealItem);
         }
 
         public void AddMealItems(List<MealItemModel> mealItemLists)
@@ -35,18 +35,18 @@ namespace FoodTracker.Data.Repository.InMemory
 
         public void DeleteMealItemById(Guid id)
         {
-            mealItems.RemoveAll(m => m.Id == id);
+            InMemoryMealItems.RemoveAll(m => m.Id == id);
         }
 
         public MealItemModel? GetMealItemById(Guid id)
         {
-            var result = mealItems.FirstOrDefault(m => m.Id == id);
+            var result = InMemoryMealItems.FirstOrDefault(m => m.Id == id);
             return result;
         }
 
         public MealItemModel? GetMealItemByName(string name)
         {
-            var result = mealItems.FirstOrDefault(x => x.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
+            var result = InMemoryMealItems.FirstOrDefault(x => x.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
             return result;
         }
 
@@ -74,7 +74,7 @@ namespace FoodTracker.Data.Repository.InMemory
 
         public void UpsertMealItem(Guid id, MealItemModel mealItem)
         {
-            var result = mealItems.FirstOrDefault(m => m.Id == id);
+            var result = InMemoryMealItems.FirstOrDefault(m => m.Id == id);
 
             if (result != null)
             {
